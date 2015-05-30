@@ -1,0 +1,25 @@
+{
+  "schema" : "http://example.org/specification/v2.0.0",
+  "metadata" : {
+  },
+  "global" : {
+  },
+  "components": {
+    "slider-appmaster": {
+      "yarn.memory": "512"
+    },
+    "SPARK_MASTER": {
+      "yarn.role.priority": "1",
+      "yarn.component.instances": "1",
+      "yarn.placement.escalate.seconds": "10",
+      "yarn.memory": "512"
+    },
+    "SPARK_SLAVE": {
+      "yarn.role.priority": "2",
+      "yarn.component.instances": "2",
+      "yarn.memory": "512",
+      "yarn.container.failure.threshold": "15",
+      "yarn.placement.escalate.seconds": "60"
+    }
+  }
+}

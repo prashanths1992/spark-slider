@@ -1,0 +1,24 @@
+{
+  "schema": "http://example.org/specification/v2.0.0",
+  "metadata": {
+  },
+  "global": {
+    "application.def": ".slider/package/spark/spark-on-slider.zip",
+    "site.global.app_root": "${AGENT_WORK_ROOT}/app/install/spark-1.3.1-bin-hadoop2.6",
+    "site.global.master_host": "${SPARK_MASTER_HOST}",
+    "site.global.master_port": "${SPARK_MASTER.ALLOCATED_PORT}",
+    "site.global.webui_port": "${SPARK_MASTER.ALLOCATED_PORT}",
+    "site.global.spark_opts": ""
+  },
+  "components": {
+    "slider-appmaster": {
+      "jvm.heapsize": "512M"
+    },
+    "SPARK_MASTER": {
+      "jvm.heapsize": "768M"
+    },
+    "SPARK_SLAVE": {
+      "jvm.heapsize": "1024M"
+    }
+  }
+}
