@@ -48,7 +48,9 @@ slider install-package --replacepkg --name spark --package $PROJECT_HOME/spark-o
 **4) Configure environment specific settings**
 
 Edit the `$PROJECT_HOME/appConfig-default.json`. At a minimum, you'll need to update the following settings
-to match your environment:
+to match your environment. Make sure the spark version and the hadoop version that it is compiled for are correct.
+
+Here is my example:
 
 ```
     "site.global.app_root": "${AGENT_WORK_ROOT}/app/install/spark-1.3.1-bin-hadoop2.6",
