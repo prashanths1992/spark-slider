@@ -87,6 +87,3 @@ This work started from the Solr-on-Slider package at https://github.com/LucidWor
 TODO
 ========
 Better health monitoring and status reporting for the master and slave processes
-
-Redirect master and slave logs to the container log directory
-
