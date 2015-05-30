@@ -35,7 +35,7 @@ class Spark_Component(Script):
     self.configure(env)
 
     worker_id = random.randint(1, 10000)
-    start_spark_cmd = """{app_root}/sbin/start-slave.sh {worker_id} spark://{master_host}:{master_port}
+    start_spark_cmd = """env SPARK_LOG_DIR={app_log_dir} {app_root}/sbin/start-slave.sh {worker_id} spark://{master_host}:{master_port}
 """
 
     process_cmd = format(start_spark_cmd.replace("\n", " "))

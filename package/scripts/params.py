@@ -26,6 +26,7 @@ config = Script.get_config()
 pid_file = config['configurations']['global']['pid_file']
 app_root = config['configurations']['global']['app_root']
 app_user = config['configurations']['global']['app_user']
+app_log_dir = config['configurations']['global']['app_log_dir']
 spark_opts = config['configurations']['global']['spark_opts']
 master_host = config['configurations']['global']['master_host']
 master_port = config['configurations']['global']['master_port']

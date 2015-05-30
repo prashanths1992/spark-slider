@@ -33,7 +33,7 @@ class Spark_Component(Script):
     import params
     env.set_params(params)
     self.configure(env)
-    start_spark_cmd = """env SPARK_MASTER_PORT={master_port} SPARK_MASTER_WEBUI_PORT={webui_port} {app_root}/sbin/start-master.sh
+    start_spark_cmd = """env SPARK_LOG_DIR={app_log_dir} SPARK_MASTER_PORT={master_port} SPARK_MASTER_WEBUI_PORT={webui_port} {app_root}/sbin/start-master.sh
 """
 
     process_cmd = format(start_spark_cmd.replace("\n", " "))
