@@ -67,8 +67,6 @@ slider create spark --template $PROJECT_HOME/appConfig-default.json \
   --resources $PROJECT_HOME/resources-default.json
 ```
 
-where `$YARN_MANAGER` is the host and port of the YARN resource manager, such as localhost:8032.
-
 **7) Get the location of the Spark Master and the Spark Master Web UI from the YARN registry**
 
 ```
@@ -78,7 +76,17 @@ slider registry --getconf quicklinks --name spark --format json
 NOTE: The registry command requires using Java 7 as there's a bug in Slider that prevents the registry command
 from working correctly, see: https://issues.apache.org/jira/browse/SLIDER-878
 
-Acknowledgements:
+**8) Use the master location returned in the previous step to submit spark jobs, for example:
+
+spark-shell --master spark://c6401.ambari.apache.org:51636
+
+Acknowledgements
 ========
 This work started from the Solr-on-Slider package at https://github.com/LucidWorks/solr-slider and the HBase-on-Slider package.
+
+TODO
+========
+Better health monitoring and status reporting for the master and slave processes
+
+Redirect master and slave logs to the container log directory
 
