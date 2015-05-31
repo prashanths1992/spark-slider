@@ -23,7 +23,7 @@ from resource_management import *
 # server configurations
 config = Script.get_config()
 
-pid_file = config['configurations']['global']['pid_file']
+app_pid_dir = config['configurations']['global']['app_pid_dir']
 app_root = config['configurations']['global']['app_root']
 app_user = config['configurations']['global']['app_user']
 app_log_dir = config['configurations']['global']['app_log_dir']

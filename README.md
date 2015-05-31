@@ -85,7 +85,3 @@ spark-shell --master spark://c6401.ambari.apache.org:51636
 Acknowledgements
 ========
 This work started from the Solr-on-Slider package at https://github.com/LucidWorks/solr-slider and the HBase-on-Slider package.
-
-TODO
-========
-Better health monitoring and status reporting for the master and slave processes

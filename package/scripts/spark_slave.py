@@ -18,10 +18,12 @@ limitations under the License.
 
 """
 import random
+import os
 import sys
 from resource_management import *
 
 class Spark_Component(Script):
+
   def install(self, env):
     self.install_packages(env)
 
@@ -35,7 +37,8 @@ class Spark_Component(Script):
     self.configure(env)
 
     worker_id = random.randint(1, 10000)
-    start_spark_cmd = """env SPARK_LOG_DIR={app_log_dir} {app_root}/sbin/start-slave.sh {worker_id} spark://{master_host}:{master_port}
+    pid_file = format("{app_pid_dir}/spark-yarn-org.apache.spark.deploy.worker.Worker-{worker_id}.pid")
+    start_spark_cmd = """env SPARK_PID_DIR={app_pid_dir} SPARK_LOG_DIR={app_log_dir} {app_root}/sbin/start-slave.sh {worker_id} spark://{master_host}:{master_port}
 """
 
     process_cmd = format(start_spark_cmd.replace("\n", " "))
@@ -43,7 +46,7 @@ class Spark_Component(Script):
     Execute(process_cmd,
         logoutput=True,
         wait_for_finish=False,
-        pid_file=params.pid_file,
+        pid_file=pid_file,
         poll_after = 10,
         cwd=format("{app_root}")
     )
@@ -62,6 +65,11 @@ class Spark_Component(Script):
   def status(self, env):
     import params
     env.set_params(params)
+    # check the first pid file in this directory
+    for item in os.listdir(app_pid_dir):
+        pid_file = os.path.join(app_pid_dir, item)
+        check_process_status(pid_file)
+        break
 
 if __name__ == "__main__":
   Spark_Component().execute()

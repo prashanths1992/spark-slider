@@ -33,15 +33,16 @@ class Spark_Component(Script):
     import params
     env.set_params(params)
     self.configure(env)
-    start_spark_cmd = """env SPARK_LOG_DIR={app_log_dir} SPARK_MASTER_PORT={master_port} SPARK_MASTER_WEBUI_PORT={webui_port} {app_root}/sbin/start-master.sh
+    start_spark_cmd = """env SPARK_PID_DIR={app_pid_dir} SPARK_LOG_DIR={app_log_dir} SPARK_MASTER_PORT={master_port} SPARK_MASTER_WEBUI_PORT={webui_port} {app_root}/sbin/start-master.sh
 """
 
+    pid_file = format("{app_pid_dir}/spark-yarn-org.apache.spark.deploy.master.Master-1.pid")
     process_cmd = format(start_spark_cmd.replace("\n", " "))
     print("Starting Spark master using command: "+process_cmd)
     Execute(process_cmd,
         logoutput=True,
         wait_for_finish=False,
-        pid_file=params.pid_file,
+        pid_file=pid_file,
         poll_after = 10,
         cwd=format("{app_root}")
     )
@@ -60,6 +61,8 @@ class Spark_Component(Script):
   def status(self, env):
     import params
     env.set_params(params)
+    pid_file = format("{app_pid_dir}/spark-yarn-org.apache.spark.deploy.master.Master-1.pid")
+    check_process_status(pid_file)
 
 if __name__ == "__main__":
   Spark_Component().execute()
