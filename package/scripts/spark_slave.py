@@ -66,8 +66,8 @@ class Spark_Component(Script):
     import params
     env.set_params(params)
     # check the first pid file in this directory
-    for item in os.listdir(app_pid_dir):
-        pid_file = os.path.join(app_pid_dir, item)
+    for item in os.listdir(params.app_pid_dir):
+        pid_file = os.path.join(params.app_pid_dir, item)
         check_process_status(pid_file)
         break
 
