@@ -3,8 +3,8 @@
   "metadata": {
   },
   "global": {
-    "application.def": ".slider/package/spark/spark-on-slider.zip",
-    "site.global.app_root": "${AGENT_WORK_ROOT}/app/install/spark-1.3.1-bin-hadoop2.6",
+    "application.def": ".slider/package/spark/spark-on-yarn.zip",
+    "site.global.app_root": "${AGENT_WORK_ROOT}/app/install/spark-2.3.2-bin-hadoop2.7",
     "site.global.master_host": "${SPARK_MASTER_HOST}",
     "site.global.master_port": "${SPARK_MASTER.ALLOCATED_PORT}",
     "site.global.webui_port": "${SPARK_MASTER.ALLOCATED_PORT}",
